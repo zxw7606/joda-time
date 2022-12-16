@@ -498,8 +498,11 @@ abstract class BasicChronology extends AssembledChronology {
      * @param month precalculated month of millis
      */
     int getDayOfMonth(long millis, int year, int month) {
+        // 获取今年年初毫秒
         long dateMillis = getYearMillis(year);
+        // 获取这个月的毫秒
         dateMillis += getTotalMillisByYearMonth(year, month);
+        // 当前毫秒 - 到这个月月初之前的毫秒 例如今年是12月 那就是 1-11月的毫秒数 + 今年年初的毫秒数
         return (int) ((millis - dateMillis) / DateTimeConstants.MILLIS_PER_DAY) + 1;
     }
 

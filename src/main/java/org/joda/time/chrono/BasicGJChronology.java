@@ -90,7 +90,7 @@ abstract class BasicGJChronology extends BasicChronology {
         // milliseconds per day contains 1024 as a factor. After the division,
         // the instant isn't measured in milliseconds, but in units of
         // (128/125)seconds.
-
+        // 原本的毫秒单位为1000 这边换算成 1024, 因此之后的数据都得除1024作为一天的单元 例如一天 就是 (3600 * 24 * 1000 / 1024) = 84375
         int i = (int)((millis - getYearMillis(year)) >> 10);
 
         // There are 86400000 milliseconds per day, but divided by 1024 is

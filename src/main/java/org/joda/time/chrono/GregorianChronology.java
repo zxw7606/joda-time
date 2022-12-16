@@ -213,6 +213,7 @@ public final class GregorianChronology extends BasicGJChronology {
         if (year < 0) {
             // Add 3 before shifting right since /4 and >>2 behave differently
             // on negative numbers. When the expression is written as
+            // Tips:其中((year-1)/4-(year-1)/100+(year-1)/400 就是 其中闰年的个数，四年一闰，百年不闰，四百年再闰，所以4年的个数减去100年的个数在加上400年的个数就是其中闰年的个数了
             // (year / 4) - (year / 100) + (year / 400),
             // it works for both positive and negative values, except this optimization
             // eliminates two divisions.
